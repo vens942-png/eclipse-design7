@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eclipse Design – L'image qui frappe.</title>
+    <meta name="description" content="Graphiste Haïti, Création logo rapide, Identité visuelle entrepreneur, Flyer professionnel, Eclipse Design, Branding visuel.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Eclipse Design – L'image qui frappe.">
+    <meta property="og:description" content="Branding visuel rapide pour entrepreneurs, artistes et commerçants. Logo, flyer, identité visuelle livrés en 72h.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://eclipsedesign.netlify.app">
+    <meta property="og:image" content="https://eclipsedesign.netlify.app/og-image.png">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><circle cx='16' cy='16' r='16' fill='%23080808'/><circle cx='16' cy='16' r='14' fill='none' stroke='%23a3ff3b' stroke-width='2'/><circle cx='16' cy='16' r='6' fill='%23a3ff3b'/></svg>">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body {
+            background: #080808;
+            color: #f5f5f5;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.6;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #222;
+            position: sticky;
+            top: 0;
+            background: rgba(8,8,8,0.9);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+        .logo span { color: #a3ff3b; }
+        nav { display: flex; align-items: center; gap: 25px; }
+        nav a {
+            color: #aaa;
+            text-decoration: none;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #a3ff3b; }
+        .btn-devis {
+            background: #a3ff3b;
+            color: #000;
+            padding: 10px 20px;
+            font-weight: 700;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.85rem;
+            transition: background 0.3s;
+        }
+        .btn-devis:hover { background: #fff; }
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 60px 40px;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 7rem);
+            font-weight: 900;
+            line-height: 0.9;
+            text-transform: uppercase;
+        }
+        .hero .outline {
+            -webkit-text-fill-color: transparent;
+            -webkit-text-stroke: 2px #f5f5f5;
+        }
+        .hero .tag {
+            color: #a3ff3b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .hero .tag .line {
+            width: 40px;
+            height: 1px;
+            background: #a3ff3b;
+            display: inline-block;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            color: #999;
+            max-width: 600px;
+            margin: 25px 0 35px;
+        }
+        .hero p strong { color: #fff; }
+        .hero .cta {
+            background: #a3ff3b;
+            color: #000;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            width: fit-content;
+            transition: background 0.3s;
+        }
+        .hero .cta:hover { background: #fff; }
+        section { padding: 80px 40px; }
+        section h2 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+        }
+        section h2 span { color: #a3ff3b; }
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .service-card {
+            background: #0d0d0d;
+            border: 1px solid #1a1a1a;
+            padding: 35px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #a3ff3b;
+        }
+        .service-card .icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(163,255,59,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        .service-card h3 {
+            font-size: 1.3rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+        .service-card p { color: #999; font-size: 0.95rem; }
+        .highlight-card {
+            background: #a3ff3b;
+            color: #000;
+            border-color: #a3ff3b;
+        }
+        .highlight-card .icon { background: rgba(0,0,0,0.2); }
+        .highlight-card p { color: #111; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        .about-img {
+            background: linear-gradient(135deg, #1a1a1a, #0d0d0d);
+            border: 1px solid #a3ff3b;
+            aspect-ratio: 3/4;
+            max-width: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+        }
+        .about-img svg { width: 120px; height: 120px; stroke: #a3ff3b; }
+        .about-text p {
+            color: #999;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+        .about-text strong { color: #fff; }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid #222;
+            padding: 15px 0;
+            color: #fff;
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            outline: none;
+            transition: border-color 0.3s;
+            font-family: inherit;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus { border-color: #a3ff3b; }
+        .contact-form textarea { min-height: 120px; resize: vertical; }
+        .contact-form button {
+            width: 100%;
+            background: #a3ff3b;
+            color: #000;
+            border: none;
+            padding: 18px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact-form button:hover { background: #fff; }
+        .success-message {
+            display: none;
+            background: rgba(163,255,59,0.1);
+            border: 1px solid #a3ff3b;
+            padding: 20px;
+            text-align: center;
+            color: #a3ff3b;
+            font-weight: 700;
+        }
+        footer {
+            border-top: 1px solid #222;
+            padding: 40px;
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 768px) {
+            header { padding: 15px 20px; }
+            nav { gap: 12px; }
+            nav a { font-size: 0.7rem; letter-spacing: 1px; }
+            .hero { padding: 40px 20px; min-height: 70vh; }
+            section { padding: 50px 20px; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-img { max-width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">Eclipse <span>Design</span></div>
+    <nav>
+        <a href="#services">Services</a>
+        <a href="#about">À propos</a>
+        <a href="#contact" class="btn-devis">Devis</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="tag"><span class="line"></span> Studio de Création</div>
+    <h1>L'image<br><span class="outline">qui frappe.</span></h1>
+    <p>Branding visuel rapide pour entrepreneurs, artistes et commerçants. <strong>Logo, flyer, identité visuelle livrés en 72h.</strong></p>
+    <a href="#contact" class="cta">Demander un devis gratuit →</a>
+</section>
+
+<section id="services">
+    <h2>Ce que nous <span>créons</span> pour vous</h2>
+    <div class="services-grid">
+        <div class="service-card">
+            <div class="icon">✏️</div>
+            <h3>Logo professionnel</h3>
+            <p>La première empreinte de votre marque. Sobre, mémorable, unique.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">🖼️</div>
+            <h3>Flyer & affiche</h3>
+            <p>Votre message en une image. Print ou digital, prêt à marquer les esprits.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">📐</div>
+            <h3>Identité visuelle complète</h3>
+            <p>Logo, couleurs, typographie, charte graphique. Tout pour exister avec cohérence.</p>
+        </div>
+        <div class="service-card">
+            <div class="icon">📱</div>
+            <h3>Bannière réseaux sociaux</h3>
+            <p>Facebook, Instagram, LinkedIn. Une présence numérique qui claque.</p>
+        </div>
+        <div class="service-card highlight-card">
+            <div class="icon">⚡</div>
+            <h3>Branding accéléré</h3>
+            <p>Pack complet livré en 72h pour les entrepreneurs pressés qui veulent du pro, tout de suite.</p>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <h2>Derrière <span>Eclipse Design</span></h2>
+    <div class="about-grid">
+        <div class="about-img">
+            <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="48" stroke="#a3ff3b" stroke-width="2"/>
+                <circle cx="50" cy="50" r="30" stroke="#a3ff3b" stroke-width="1" stroke-dasharray="4 4"/>
+                <circle cx="50" cy="50" r="10" fill="#a3ff3b"/>
+                <line x1="50" y1="20" x2="50" y2="0" stroke="#a3ff3b" stroke-width="2"/>
+                <line x1="50" y1="80" x2="50" y2="100" stroke="#a3ff3b" stroke-width="2"/>
+                <line x1="20" y1="50" x2="0" y2="50" stroke="#a3ff3b" stroke-width="2"/>
+                <line x1="80" y1="50" x2="100" y2="50" stroke="#a3ff3b" stroke-width="2"/>
+            </svg>
+        </div>
+        <div class="about-text">
+            <p>Je suis créatif, graphiste et passionné par la puissance des images.</p>
+            <p>Eclipse Design est né d'un constat simple : les petits entrepreneurs, les artistes, les indépendants n'ont pas accès à un design de qualité sans se ruiner.</p>
+            <p>Mon objectif : leur offrir une identité visuelle qui frappe, rapidement, sans compromis.</p>
+            <p><strong>Ici, on ne vend pas des logos. On crée des mémoires.</strong></p>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <h2>Prêt à faire naître votre <span>image</span> ?</h2>
+    <p style="color:#999; margin-bottom:40px; max-width:500px;">Une question ? Un projet ? Remplissez le formulaire. Je vous réponds sous 24h maximum.</p>
+
+    <form class="contact-form" action="https://formspree.io/f/mbdbpkoy" method="POST">
+        <input type="text" name="name" placeholder="Votre nom" required>
+        <input type="email" name="email" placeholder="votre@email.com" required>
+        <textarea name="message" placeholder="Parlez-moi de votre marque..." required></textarea>
+        <button type="submit">Envoyer le message →</button>
+    </form>
+
+    <div class="success-message" id="success-message">
+        ✅ Message envoyé avec succès. Je vous réponds sous 24h.
+    </div>
+</section>
+
+<footer>
+    © Eclipse Design – L'image qui frappe. Tous droits réservés.
+</footer>
+
+</body>
+</html>
